@@ -7,12 +7,14 @@ function PlantPage() {
 
   const [plants, setPlants] = useState([]);
 
-  useEffect(()=>{
+  useEffect(loadPlants,[]);
+
+  function loadPlants(){
     fetch('http://localhost:6001/plants')
     .then(r=>r.json())
-    .then(d=> {setPlants(d); console.log(d);})
-  },[])
-
+    .then(d=> setPlants(d))
+  }
+  
   function handleSubmitPlant(newPlant){
     fetch('http://localhost:6001/plants',{
       method: "POST",
