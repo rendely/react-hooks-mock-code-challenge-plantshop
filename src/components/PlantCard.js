@@ -1,14 +1,14 @@
 import React from "react";
 
-function PlantCard({plant, onClickUpdatePlant}) {
+function PlantCard({plant, onUpdatePlant}) {
 
   function handleInStockButton(){
-    onClickUpdatePlant(plant.id, 'isInStock', plant.isInStock === undefined ? false : !plant.isInStock);
+    onUpdatePlant(plant.id, 'isInStock', plant.isInStock === undefined ? false : !plant.isInStock);
   }
 
   function handleChangePrice(e){
     const price = e.target.value;
-    onClickUpdatePlant(plant.id, 'price', price);
+    onUpdatePlant(plant.id, 'price', price);
   }
   
   return (

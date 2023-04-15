@@ -52,7 +52,7 @@ function PlantPage() {
     <main>
       <NewPlantForm onSubmitPlant={handleSubmitPlant}/>
       <Search search={search} setSearch={setSearch} />
-      <PlantList plants={searchPlants(plants)} onClickUpdatePlant={handleUpdatePlant} />
+      <PlantList plants={searchPlants(plants)} onUpdatePlant={handleUpdatePlant} />
     </main>
   );
 }
