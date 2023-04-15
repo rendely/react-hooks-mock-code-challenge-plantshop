@@ -5,7 +5,8 @@ function NewPlantForm({onSubmitPlant}) {
   const [newPlant, setNewPlant] = useState({
     name: "",
     image: "",
-    price: 0
+    price: 0,
+    isInStock: true
   });
 
   function handleChange(e){

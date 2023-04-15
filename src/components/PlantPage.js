@@ -25,11 +25,27 @@ function PlantPage() {
       .then(newPlant => setPlants([...plants, newPlant]))
   }
 
+  function handleInStockButton(id, isInStock){
+    fetch('http://localhost:6001/plants/'+id,{
+      method: "PATCH",
+      headers: {"Content-type": "application/json"},
+      body: JSON.stringify({'isInStock': isInStock})
+    })
+      .then(r => r.json())
+      .then(newPlant => {
+        setPlants(plants.map(plant => {
+          if (plant.id === id) return newPlant;
+          else return plant;
+        }));
+        }
+      )
+  }
+
   return (
     <main>
       <NewPlantForm onSubmitPlant={handleSubmitPlant}/>
       <Search />
-      <PlantList plants={plants} />
+      <PlantList plants={plants} onClickInStockButton={handleInStockButton} />
     </main>
   );
 }
