@@ -1,16 +1,22 @@
 import React from "react";
 
-function PlantCard({plant, onClickInStockButton}) {
+function PlantCard({plant, onClickUpdatePlant}) {
 
   function handleInStockButton(){
-    onClickInStockButton(plant.id, plant.isInStock === undefined ? false : !plant.isInStock);
+    onClickUpdatePlant(plant.id, 'isInStock', plant.isInStock === undefined ? false : !plant.isInStock);
   }
 
+  function handleChangePrice(e){
+    const price = e.target.value;
+    onClickUpdatePlant(plant.id, 'price', price);
+  }
+  
   return (
     <li className="card">
       <img src={plant.image} alt={"plant name"} />
       <h4>{plant.name}</h4>
-      <p>Price: {plant.price}</p>
+      <p name="price-display">Price: {plant.price}</p>
+      <input onChange={handleChangePrice} name="price=input" type="number" step="0.01" value={plant.price}></input>
       {plant.isInStock || plant.isInStock === undefined ? (
         <button onClick={handleInStockButton} className="primary">In Stock</button>
       ) : (

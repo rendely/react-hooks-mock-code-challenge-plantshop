@@ -26,11 +26,11 @@ function PlantPage() {
       .then(newPlant => setPlants([...plants, newPlant]))
   }
 
-  function handleInStockButton(id, isInStock){
+  function handleUpdatePlant(id, key, value){
     fetch('http://localhost:6001/plants/'+id,{
       method: "PATCH",
       headers: {"Content-type": "application/json"},
-      body: JSON.stringify({'isInStock': isInStock})
+      body: JSON.stringify({[key]: value})
     })
       .then(r => r.json())
       .then(newPlant => {
@@ -52,7 +52,7 @@ function PlantPage() {
     <main>
       <NewPlantForm onSubmitPlant={handleSubmitPlant}/>
       <Search search={search} setSearch={setSearch} />
-      <PlantList plants={searchPlants(plants)} onClickInStockButton={handleInStockButton} />
+      <PlantList plants={searchPlants(plants)} onClickUpdatePlant={handleUpdatePlant} />
     </main>
   );
 }

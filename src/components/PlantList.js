@@ -1,10 +1,10 @@
 import React from "react";
 import PlantCard from "./PlantCard";
 
-function PlantList({plants, onClickInStockButton}) {
+function PlantList({plants, onClickUpdatePlant}) {
   return (
     <ul className="cards">
-      {plants.map(plant => <PlantCard key={plant.id} plant={plant} onClickInStockButton={onClickInStockButton}/>)}
+      {plants.map(plant => <PlantCard key={plant.id} plant={plant} onClickUpdatePlant={onClickUpdatePlant}/>)}
     </ul>
   );
 }
